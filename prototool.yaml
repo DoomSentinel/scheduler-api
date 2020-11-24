@@ -1,0 +1,32 @@
+protoc:
+  version: 3.12.3
+  includes:
+     - '/usr/include'
+lint:
+  group: google
+  rules:
+    add:
+      - ENUM_NAMES_CAPITALIZED
+      - ENUM_NAMES_CAMEL_CASE
+      - ENUM_FIELD_PREFIXES_EXCEPT_MESSAGE
+      - ENUM_ZERO_VALUES_INVALID_EXCEPT_MESSAGE
+      - FILE_NAMES_LOWER_SNAKE_CASE
+      - FILE_OPTIONS_REQUIRE_GO_PACKAGE
+      - FILE_OPTIONS_GO_PACKAGE_SAME_IN_DIR
+      - FILE_OPTIONS_GO_PACKAGE_NOT_LONG_FORM
+      - IMPORTS_NOT_PUBLIC
+      - IMPORTS_NOT_WEAK
+      - MESSAGE_FIELD_NAMES_NO_DESCRIPTOR
+      - MESSAGE_FIELDS_NO_JSON_NAME
+      - ONEOF_NAMES_LOWER_SNAKE_CASE
+      - PACKAGE_NO_KEYWORDS
+      - PACKAGES_SAME_IN_DIR
+      - SYNTAX_PROTO3
+generate:
+  go_options:
+    import_path: github.com/DoomSentinel/sheduler-api
+  plugins:
+    - name: go
+      type: go
+      flags: plugins=grpc
+      output: ./gen/go
