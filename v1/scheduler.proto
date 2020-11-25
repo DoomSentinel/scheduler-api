@@ -8,15 +8,13 @@ option go_package = "scheduler";
 
 service SchedulerService {
     rpc ScheduleRemoteTask (ScheduleRemoteTaskRequest) returns (ScheduleRemoteTaskResponse);
-    rpc ClearSchedule (ClearScheduleRequest) returns (ClearScheduleResponse);
 }
 
 message ScheduleRemoteTaskRequest {
     string id = 1; //UUID-v4
     int32 retries = 2;
-    google.protobuf.Timestamp create_time = 3;
-    google.protobuf.Timestamp schedule_time = 4;
-    RemoteExecutionConfig config = 5;
+    google.protobuf.Timestamp schedule_time = 3;
+    RemoteExecutionConfig config = 4;
 }
 
 message ScheduleRemoteTaskResponse {
@@ -29,12 +27,6 @@ message RemoteExecutionConfig {
     bytes body = 4;
     uint32 timeout = 5;
     repeated uint32 expected_codes = 6;
-}
-
-message ClearScheduleRequest {
-}
-
-message ClearScheduleResponse {
 }
 
 enum ExecutionMethod {
