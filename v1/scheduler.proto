@@ -26,8 +26,7 @@ message ExecutionNotificationsResponse {
 
 message ScheduleDummyTaskRequest {
     string id = 1; //UUID-v4
-    int32 retries = 2;
-    google.protobuf.Timestamp schedule_time = 3;
+    google.protobuf.Timestamp schedule_time = 2;
 }
 
 message ScheduleDummyTaskResponse {
