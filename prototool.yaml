@@ -24,7 +24,7 @@ lint:
       - SYNTAX_PROTO3
 generate:
   go_options:
-    import_path: github.com/DoomSentinel/sheduler-api
+    import_path: github.com/DoomSentinel/scheduler-api
   plugins:
     - name: go
       type: go
