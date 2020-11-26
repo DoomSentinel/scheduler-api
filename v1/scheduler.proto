@@ -7,7 +7,39 @@ import "google/protobuf/timestamp.proto";
 option go_package = "scheduler";
 
 service SchedulerService {
+    rpc ScheduleDummyTask (ScheduleDummyTaskRequest) returns (ScheduleDummyTaskResponse);
+    rpc ScheduleCommandTask (ScheduleCommandTaskRequest) returns (ScheduleCommandTaskResponse);
     rpc ScheduleRemoteTask (ScheduleRemoteTaskRequest) returns (ScheduleRemoteTaskResponse);
+    rpc ExecutionNotifications (ExecutionNotificationsRequest) returns (stream ExecutionNotificationsResponse);
+}
+
+message ExecutionNotificationsRequest {
+}
+
+message ExecutionNotificationsResponse {
+    string task_id = 1;
+    ExecutionStatus status = 2;
+    int64 duration = 3; //ms
+    bytes output = 4;
+    string message = 5;
+}
+
+message ScheduleDummyTaskRequest {
+    string id = 1; //UUID-v4
+    int32 retries = 2;
+    google.protobuf.Timestamp schedule_time = 3;
+}
+
+message ScheduleDummyTaskResponse {
+}
+
+message ScheduleCommandTaskRequest {
+    string id = 1; //UUID-v4
+    google.protobuf.Timestamp schedule_time = 2;
+    CommandTaskConfig config = 3;
+}
+
+message ScheduleCommandTaskResponse {
 }
 
 message ScheduleRemoteTaskRequest {
@@ -18,6 +50,12 @@ message ScheduleRemoteTaskRequest {
 }
 
 message ScheduleRemoteTaskResponse {
+}
+
+message CommandTaskConfig {
+    string command = 1;
+    repeated string arguments = 2;
+    uint32 timeout = 3;
 }
 
 message RemoteExecutionConfig {
@@ -33,4 +71,10 @@ enum ExecutionMethod {
     EXECUTION_METHOD_INVALID = 0;
     EXECUTION_METHOD_POST = 1;
     EXECUTION_METHOD_GET = 2;
+}
+
+enum ExecutionStatus {
+    EXECUTION_STATUS_INVALID = 0;
+    EXECUTION_STATUS_SUCCESS = 1;
+    EXECUTION_STATUS_FAILED = 2;
 }

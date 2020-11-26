@@ -53,6 +53,308 @@ func (ExecutionMethod) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_49bf124e81298781, []int{0}
 }
 
+type ExecutionStatus int32
+
+const (
+	ExecutionStatus_EXECUTION_STATUS_INVALID ExecutionStatus = 0
+	ExecutionStatus_EXECUTION_STATUS_SUCCESS ExecutionStatus = 1
+	ExecutionStatus_EXECUTION_STATUS_FAILED  ExecutionStatus = 2
+)
+
+var ExecutionStatus_name = map[int32]string{
+	0: "EXECUTION_STATUS_INVALID",
+	1: "EXECUTION_STATUS_SUCCESS",
+	2: "EXECUTION_STATUS_FAILED",
+}
+
+var ExecutionStatus_value = map[string]int32{
+	"EXECUTION_STATUS_INVALID": 0,
+	"EXECUTION_STATUS_SUCCESS": 1,
+	"EXECUTION_STATUS_FAILED":  2,
+}
+
+func (x ExecutionStatus) String() string {
+	return proto.EnumName(ExecutionStatus_name, int32(x))
+}
+
+func (ExecutionStatus) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_49bf124e81298781, []int{1}
+}
+
+type ExecutionNotificationsRequest struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ExecutionNotificationsRequest) Reset()         { *m = ExecutionNotificationsRequest{} }
+func (m *ExecutionNotificationsRequest) String() string { return proto.CompactTextString(m) }
+func (*ExecutionNotificationsRequest) ProtoMessage()    {}
+func (*ExecutionNotificationsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_49bf124e81298781, []int{0}
+}
+
+func (m *ExecutionNotificationsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ExecutionNotificationsRequest.Unmarshal(m, b)
+}
+func (m *ExecutionNotificationsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ExecutionNotificationsRequest.Marshal(b, m, deterministic)
+}
+func (m *ExecutionNotificationsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ExecutionNotificationsRequest.Merge(m, src)
+}
+func (m *ExecutionNotificationsRequest) XXX_Size() int {
+	return xxx_messageInfo_ExecutionNotificationsRequest.Size(m)
+}
+func (m *ExecutionNotificationsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ExecutionNotificationsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ExecutionNotificationsRequest proto.InternalMessageInfo
+
+type ExecutionNotificationsResponse struct {
+	TaskId               string          `protobuf:"bytes,1,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
+	Status               ExecutionStatus `protobuf:"varint,2,opt,name=status,proto3,enum=scheduler.v1.ExecutionStatus" json:"status,omitempty"`
+	Duration             int64           `protobuf:"varint,3,opt,name=duration,proto3" json:"duration,omitempty"`
+	Output               []byte          `protobuf:"bytes,4,opt,name=output,proto3" json:"output,omitempty"`
+	Message              string          `protobuf:"bytes,5,opt,name=message,proto3" json:"message,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
+}
+
+func (m *ExecutionNotificationsResponse) Reset()         { *m = ExecutionNotificationsResponse{} }
+func (m *ExecutionNotificationsResponse) String() string { return proto.CompactTextString(m) }
+func (*ExecutionNotificationsResponse) ProtoMessage()    {}
+func (*ExecutionNotificationsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_49bf124e81298781, []int{1}
+}
+
+func (m *ExecutionNotificationsResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ExecutionNotificationsResponse.Unmarshal(m, b)
+}
+func (m *ExecutionNotificationsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ExecutionNotificationsResponse.Marshal(b, m, deterministic)
+}
+func (m *ExecutionNotificationsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ExecutionNotificationsResponse.Merge(m, src)
+}
+func (m *ExecutionNotificationsResponse) XXX_Size() int {
+	return xxx_messageInfo_ExecutionNotificationsResponse.Size(m)
+}
+func (m *ExecutionNotificationsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ExecutionNotificationsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ExecutionNotificationsResponse proto.InternalMessageInfo
+
+func (m *ExecutionNotificationsResponse) GetTaskId() string {
+	if m != nil {
+		return m.TaskId
+	}
+	return ""
+}
+
+func (m *ExecutionNotificationsResponse) GetStatus() ExecutionStatus {
+	if m != nil {
+		return m.Status
+	}
+	return ExecutionStatus_EXECUTION_STATUS_INVALID
+}
+
+func (m *ExecutionNotificationsResponse) GetDuration() int64 {
+	if m != nil {
+		return m.Duration
+	}
+	return 0
+}
+
+func (m *ExecutionNotificationsResponse) GetOutput() []byte {
+	if m != nil {
+		return m.Output
+	}
+	return nil
+}
+
+func (m *ExecutionNotificationsResponse) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
+}
+
+type ScheduleDummyTaskRequest struct {
+	Id                   string               `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Retries              int32                `protobuf:"varint,2,opt,name=retries,proto3" json:"retries,omitempty"`
+	ScheduleTime         *timestamp.Timestamp `protobuf:"bytes,3,opt,name=schedule_time,json=scheduleTime,proto3" json:"schedule_time,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *ScheduleDummyTaskRequest) Reset()         { *m = ScheduleDummyTaskRequest{} }
+func (m *ScheduleDummyTaskRequest) String() string { return proto.CompactTextString(m) }
+func (*ScheduleDummyTaskRequest) ProtoMessage()    {}
+func (*ScheduleDummyTaskRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_49bf124e81298781, []int{2}
+}
+
+func (m *ScheduleDummyTaskRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ScheduleDummyTaskRequest.Unmarshal(m, b)
+}
+func (m *ScheduleDummyTaskRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ScheduleDummyTaskRequest.Marshal(b, m, deterministic)
+}
+func (m *ScheduleDummyTaskRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ScheduleDummyTaskRequest.Merge(m, src)
+}
+func (m *ScheduleDummyTaskRequest) XXX_Size() int {
+	return xxx_messageInfo_ScheduleDummyTaskRequest.Size(m)
+}
+func (m *ScheduleDummyTaskRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ScheduleDummyTaskRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ScheduleDummyTaskRequest proto.InternalMessageInfo
+
+func (m *ScheduleDummyTaskRequest) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
+func (m *ScheduleDummyTaskRequest) GetRetries() int32 {
+	if m != nil {
+		return m.Retries
+	}
+	return 0
+}
+
+func (m *ScheduleDummyTaskRequest) GetScheduleTime() *timestamp.Timestamp {
+	if m != nil {
+		return m.ScheduleTime
+	}
+	return nil
+}
+
+type ScheduleDummyTaskResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ScheduleDummyTaskResponse) Reset()         { *m = ScheduleDummyTaskResponse{} }
+func (m *ScheduleDummyTaskResponse) String() string { return proto.CompactTextString(m) }
+func (*ScheduleDummyTaskResponse) ProtoMessage()    {}
+func (*ScheduleDummyTaskResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_49bf124e81298781, []int{3}
+}
+
+func (m *ScheduleDummyTaskResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ScheduleDummyTaskResponse.Unmarshal(m, b)
+}
+func (m *ScheduleDummyTaskResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ScheduleDummyTaskResponse.Marshal(b, m, deterministic)
+}
+func (m *ScheduleDummyTaskResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ScheduleDummyTaskResponse.Merge(m, src)
+}
+func (m *ScheduleDummyTaskResponse) XXX_Size() int {
+	return xxx_messageInfo_ScheduleDummyTaskResponse.Size(m)
+}
+func (m *ScheduleDummyTaskResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ScheduleDummyTaskResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ScheduleDummyTaskResponse proto.InternalMessageInfo
+
+type ScheduleCommandTaskRequest struct {
+	Id                   string               `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	ScheduleTime         *timestamp.Timestamp `protobuf:"bytes,2,opt,name=schedule_time,json=scheduleTime,proto3" json:"schedule_time,omitempty"`
+	Config               *CommandTaskConfig   `protobuf:"bytes,3,opt,name=config,proto3" json:"config,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *ScheduleCommandTaskRequest) Reset()         { *m = ScheduleCommandTaskRequest{} }
+func (m *ScheduleCommandTaskRequest) String() string { return proto.CompactTextString(m) }
+func (*ScheduleCommandTaskRequest) ProtoMessage()    {}
+func (*ScheduleCommandTaskRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_49bf124e81298781, []int{4}
+}
+
+func (m *ScheduleCommandTaskRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ScheduleCommandTaskRequest.Unmarshal(m, b)
+}
+func (m *ScheduleCommandTaskRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ScheduleCommandTaskRequest.Marshal(b, m, deterministic)
+}
+func (m *ScheduleCommandTaskRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ScheduleCommandTaskRequest.Merge(m, src)
+}
+func (m *ScheduleCommandTaskRequest) XXX_Size() int {
+	return xxx_messageInfo_ScheduleCommandTaskRequest.Size(m)
+}
+func (m *ScheduleCommandTaskRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ScheduleCommandTaskRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ScheduleCommandTaskRequest proto.InternalMessageInfo
+
+func (m *ScheduleCommandTaskRequest) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
+func (m *ScheduleCommandTaskRequest) GetScheduleTime() *timestamp.Timestamp {
+	if m != nil {
+		return m.ScheduleTime
+	}
+	return nil
+}
+
+func (m *ScheduleCommandTaskRequest) GetConfig() *CommandTaskConfig {
+	if m != nil {
+		return m.Config
+	}
+	return nil
+}
+
+type ScheduleCommandTaskResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ScheduleCommandTaskResponse) Reset()         { *m = ScheduleCommandTaskResponse{} }
+func (m *ScheduleCommandTaskResponse) String() string { return proto.CompactTextString(m) }
+func (*ScheduleCommandTaskResponse) ProtoMessage()    {}
+func (*ScheduleCommandTaskResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_49bf124e81298781, []int{5}
+}
+
+func (m *ScheduleCommandTaskResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ScheduleCommandTaskResponse.Unmarshal(m, b)
+}
+func (m *ScheduleCommandTaskResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ScheduleCommandTaskResponse.Marshal(b, m, deterministic)
+}
+func (m *ScheduleCommandTaskResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ScheduleCommandTaskResponse.Merge(m, src)
+}
+func (m *ScheduleCommandTaskResponse) XXX_Size() int {
+	return xxx_messageInfo_ScheduleCommandTaskResponse.Size(m)
+}
+func (m *ScheduleCommandTaskResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ScheduleCommandTaskResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ScheduleCommandTaskResponse proto.InternalMessageInfo
+
 type ScheduleRemoteTaskRequest struct {
 	Id                   string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Retries              int32                  `protobuf:"varint,2,opt,name=retries,proto3" json:"retries,omitempty"`
@@ -67,7 +369,7 @@ func (m *ScheduleRemoteTaskRequest) Reset()         { *m = ScheduleRemoteTaskReq
 func (m *ScheduleRemoteTaskRequest) String() string { return proto.CompactTextString(m) }
 func (*ScheduleRemoteTaskRequest) ProtoMessage()    {}
 func (*ScheduleRemoteTaskRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_49bf124e81298781, []int{0}
+	return fileDescriptor_49bf124e81298781, []int{6}
 }
 
 func (m *ScheduleRemoteTaskRequest) XXX_Unmarshal(b []byte) error {
@@ -126,7 +428,7 @@ func (m *ScheduleRemoteTaskResponse) Reset()         { *m = ScheduleRemoteTaskRe
 func (m *ScheduleRemoteTaskResponse) String() string { return proto.CompactTextString(m) }
 func (*ScheduleRemoteTaskResponse) ProtoMessage()    {}
 func (*ScheduleRemoteTaskResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_49bf124e81298781, []int{1}
+	return fileDescriptor_49bf124e81298781, []int{7}
 }
 
 func (m *ScheduleRemoteTaskResponse) XXX_Unmarshal(b []byte) error {
@@ -147,6 +449,61 @@ func (m *ScheduleRemoteTaskResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ScheduleRemoteTaskResponse proto.InternalMessageInfo
 
+type CommandTaskConfig struct {
+	Command              string   `protobuf:"bytes,1,opt,name=command,proto3" json:"command,omitempty"`
+	Arguments            []string `protobuf:"bytes,2,rep,name=arguments,proto3" json:"arguments,omitempty"`
+	Timeout              uint32   `protobuf:"varint,3,opt,name=timeout,proto3" json:"timeout,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CommandTaskConfig) Reset()         { *m = CommandTaskConfig{} }
+func (m *CommandTaskConfig) String() string { return proto.CompactTextString(m) }
+func (*CommandTaskConfig) ProtoMessage()    {}
+func (*CommandTaskConfig) Descriptor() ([]byte, []int) {
+	return fileDescriptor_49bf124e81298781, []int{8}
+}
+
+func (m *CommandTaskConfig) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandTaskConfig.Unmarshal(m, b)
+}
+func (m *CommandTaskConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandTaskConfig.Marshal(b, m, deterministic)
+}
+func (m *CommandTaskConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandTaskConfig.Merge(m, src)
+}
+func (m *CommandTaskConfig) XXX_Size() int {
+	return xxx_messageInfo_CommandTaskConfig.Size(m)
+}
+func (m *CommandTaskConfig) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandTaskConfig.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandTaskConfig proto.InternalMessageInfo
+
+func (m *CommandTaskConfig) GetCommand() string {
+	if m != nil {
+		return m.Command
+	}
+	return ""
+}
+
+func (m *CommandTaskConfig) GetArguments() []string {
+	if m != nil {
+		return m.Arguments
+	}
+	return nil
+}
+
+func (m *CommandTaskConfig) GetTimeout() uint32 {
+	if m != nil {
+		return m.Timeout
+	}
+	return 0
+}
+
 type RemoteExecutionConfig struct {
 	Method               ExecutionMethod   `protobuf:"varint,1,opt,name=method,proto3,enum=scheduler.v1.ExecutionMethod" json:"method,omitempty"`
 	Url                  string            `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
@@ -163,7 +520,7 @@ func (m *RemoteExecutionConfig) Reset()         { *m = RemoteExecutionConfig{} }
 func (m *RemoteExecutionConfig) String() string { return proto.CompactTextString(m) }
 func (*RemoteExecutionConfig) ProtoMessage()    {}
 func (*RemoteExecutionConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_49bf124e81298781, []int{2}
+	return fileDescriptor_49bf124e81298781, []int{9}
 }
 
 func (m *RemoteExecutionConfig) XXX_Unmarshal(b []byte) error {
@@ -228,8 +585,16 @@ func (m *RemoteExecutionConfig) GetExpectedCodes() []uint32 {
 
 func init() {
 	proto.RegisterEnum("scheduler.v1.ExecutionMethod", ExecutionMethod_name, ExecutionMethod_value)
+	proto.RegisterEnum("scheduler.v1.ExecutionStatus", ExecutionStatus_name, ExecutionStatus_value)
+	proto.RegisterType((*ExecutionNotificationsRequest)(nil), "scheduler.v1.ExecutionNotificationsRequest")
+	proto.RegisterType((*ExecutionNotificationsResponse)(nil), "scheduler.v1.ExecutionNotificationsResponse")
+	proto.RegisterType((*ScheduleDummyTaskRequest)(nil), "scheduler.v1.ScheduleDummyTaskRequest")
+	proto.RegisterType((*ScheduleDummyTaskResponse)(nil), "scheduler.v1.ScheduleDummyTaskResponse")
+	proto.RegisterType((*ScheduleCommandTaskRequest)(nil), "scheduler.v1.ScheduleCommandTaskRequest")
+	proto.RegisterType((*ScheduleCommandTaskResponse)(nil), "scheduler.v1.ScheduleCommandTaskResponse")
 	proto.RegisterType((*ScheduleRemoteTaskRequest)(nil), "scheduler.v1.ScheduleRemoteTaskRequest")
 	proto.RegisterType((*ScheduleRemoteTaskResponse)(nil), "scheduler.v1.ScheduleRemoteTaskResponse")
+	proto.RegisterType((*CommandTaskConfig)(nil), "scheduler.v1.CommandTaskConfig")
 	proto.RegisterType((*RemoteExecutionConfig)(nil), "scheduler.v1.RemoteExecutionConfig")
 	proto.RegisterMapType((map[string]string)(nil), "scheduler.v1.RemoteExecutionConfig.HeadersEntry")
 }
@@ -239,37 +604,55 @@ func init() {
 }
 
 var fileDescriptor_49bf124e81298781 = []byte{
-	// 471 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x52, 0x4d, 0x6f, 0xd3, 0x40,
-	0x10, 0xc5, 0x76, 0x9b, 0x2a, 0x93, 0x0f, 0xac, 0x51, 0x2b, 0x6d, 0xad, 0x22, 0xac, 0x20, 0x84,
-	0xc5, 0xc1, 0xa1, 0x41, 0x48, 0xa8, 0x1c, 0x10, 0xa4, 0x16, 0x0d, 0xa2, 0x0d, 0xda, 0x18, 0x84,
-	0xb8, 0x44, 0x89, 0x3d, 0x4d, 0xac, 0x26, 0xd9, 0xe0, 0x5d, 0x47, 0x8d, 0xf8, 0x6d, 0x9c, 0xf8,
-	0x63, 0xc8, 0x5f, 0xa1, 0x25, 0x45, 0x70, 0xdb, 0x99, 0x79, 0xb3, 0xf3, 0xde, 0x9b, 0x01, 0x5c,
-	0x1d, 0xb7, 0x65, 0x30, 0xa5, 0x30, 0x99, 0x51, 0xec, 0x2e, 0x63, 0xa1, 0x04, 0xd6, 0x7f, 0x27,
-	0x56, 0xc7, 0xd6, 0xc3, 0x89, 0x10, 0x93, 0x19, 0xb5, 0xb3, 0xda, 0x38, 0xb9, 0x6c, 0xab, 0x68,
-	0x4e, 0x52, 0x8d, 0xe6, 0xcb, 0x1c, 0xde, 0xfa, 0xa9, 0xc1, 0xe1, 0xa0, 0xe8, 0xe0, 0x34, 0x17,
-	0x8a, 0xfc, 0x91, 0xbc, 0xe2, 0xf4, 0x2d, 0x21, 0xa9, 0xb0, 0x09, 0x7a, 0x14, 0x32, 0xcd, 0xd6,
-	0x9c, 0x2a, 0xd7, 0xa3, 0x10, 0x19, 0xec, 0xc5, 0xa4, 0xe2, 0x88, 0x24, 0xd3, 0x6d, 0xcd, 0xd9,
-	0xe5, 0x65, 0x88, 0xaf, 0xa1, 0x51, 0x0e, 0x1e, 0xa6, 0x33, 0x98, 0x61, 0x6b, 0x4e, 0xad, 0x63,
-	0xb9, 0x39, 0x01, 0xb7, 0x24, 0xe0, 0xfa, 0x25, 0x01, 0xbe, 0x61, 0x9a, 0xa6, 0xf0, 0x15, 0x54,
-	0x02, 0xb1, 0xb8, 0x8c, 0x26, 0x6c, 0x27, 0xeb, 0x7c, 0xe4, 0xde, 0x14, 0xe2, 0xe6, 0xdc, 0xbc,
-	0x6b, 0x0a, 0x12, 0x15, 0x89, 0x45, 0x37, 0x83, 0xf2, 0xa2, 0xa5, 0x75, 0x04, 0xd6, 0x5d, 0x22,
-	0xe4, 0x52, 0x2c, 0x24, 0xb5, 0x7e, 0xe8, 0x70, 0x70, 0x67, 0x3f, 0xbe, 0x80, 0xca, 0x9c, 0xd4,
-	0x54, 0xe4, 0x1a, 0x9b, 0x9d, 0x07, 0xb7, 0x87, 0x6e, 0xe0, 0xe7, 0x19, 0x88, 0x17, 0x60, 0x34,
-	0xc1, 0x48, 0xe2, 0x59, 0x66, 0x41, 0x95, 0xa7, 0x4f, 0x7c, 0x0f, 0x7b, 0x53, 0x1a, 0x85, 0x14,
-	0x4b, 0x66, 0xd8, 0x86, 0x53, 0xeb, 0x3c, 0xfb, 0x0f, 0xfa, 0xee, 0x59, 0xde, 0xe2, 0x2d, 0x54,
-	0xbc, 0xe6, 0xe5, 0x07, 0x88, 0xb0, 0x33, 0x16, 0xe1, 0x3a, 0xf3, 0xa1, 0xce, 0xb3, 0x77, 0x6a,
-	0x7c, 0xea, 0xaa, 0x48, 0x14, 0xdb, 0xb5, 0x35, 0xa7, 0xc1, 0xcb, 0x10, 0x1f, 0x43, 0x93, 0xae,
-	0x97, 0x14, 0x28, 0x0a, 0x87, 0x81, 0x08, 0x49, 0xb2, 0x8a, 0x6d, 0x38, 0x0d, 0xde, 0x28, 0xb3,
-	0xdd, 0x34, 0x69, 0x9d, 0x40, 0xfd, 0xe6, 0xb4, 0x54, 0xc2, 0x15, 0xad, 0x8b, 0xd5, 0xa6, 0x4f,
-	0xdc, 0x87, 0xdd, 0xd5, 0x68, 0x96, 0x50, 0x21, 0x2b, 0x0f, 0x4e, 0xf4, 0x97, 0xda, 0xd3, 0x10,
-	0xee, 0xff, 0xe1, 0x04, 0x1e, 0x01, 0xf3, 0xbe, 0x78, 0xdd, 0x4f, 0x7e, 0xaf, 0x7f, 0x31, 0x3c,
-	0xf7, 0xfc, 0xb3, 0xfe, 0xe9, 0xb0, 0x77, 0xf1, 0xf9, 0xcd, 0x87, 0xde, 0xa9, 0x79, 0x0f, 0x0f,
-	0xe1, 0x60, 0xab, 0xfa, 0xb1, 0x3f, 0xf0, 0x4d, 0x0d, 0x19, 0xec, 0x6f, 0x95, 0xde, 0x79, 0xbe,
-	0xa9, 0x77, 0xbe, 0x83, 0x59, 0xee, 0x30, 0x1e, 0x50, 0xbc, 0x8a, 0x02, 0xc2, 0x09, 0xe0, 0xf6,
-	0x5e, 0xf1, 0xc9, 0x6d, 0x6f, 0xff, 0x7a, 0xbe, 0x96, 0xf3, 0x6f, 0x60, 0x7e, 0x22, 0x6f, 0x6b,
-	0x5f, 0xab, 0x1b, 0xe8, 0xb8, 0x92, 0x1d, 0xeb, 0xf3, 0x5f, 0x01, 0x00, 0x00, 0xff, 0xff, 0x11,
-	0xb2, 0x78, 0xfe, 0x5f, 0x03, 0x00, 0x00,
+	// 760 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x55, 0xdd, 0x4e, 0xdb, 0x48,
+	0x14, 0x5e, 0xdb, 0x24, 0x6c, 0x0e, 0x84, 0x0d, 0xb3, 0xfc, 0x18, 0x03, 0x4b, 0x94, 0xd5, 0xee,
+	0x7a, 0x69, 0x15, 0x20, 0x55, 0xd5, 0x8a, 0x5e, 0x54, 0x34, 0x71, 0x4b, 0x2a, 0x7e, 0xaa, 0xb1,
+	0xa9, 0xaa, 0xde, 0x44, 0xc6, 0x1e, 0x82, 0x21, 0xce, 0xa4, 0xf6, 0x38, 0x22, 0x0f, 0xd0, 0x57,
+	0xe9, 0x5b, 0xb4, 0x37, 0xed, 0x83, 0x55, 0xb6, 0xc7, 0xf9, 0xc1, 0x4e, 0xa1, 0x57, 0xbd, 0x9b,
+	0x33, 0xe7, 0x9b, 0x39, 0xdf, 0xf7, 0x8d, 0xcf, 0x31, 0xa0, 0xfe, 0xde, 0x8e, 0x6f, 0x5d, 0x12,
+	0x3b, 0xe8, 0x10, 0xaf, 0xda, 0xf3, 0x28, 0xa3, 0x68, 0x7e, 0xb4, 0xd1, 0xdf, 0x53, 0xb6, 0xda,
+	0x94, 0xb6, 0x3b, 0x64, 0x27, 0xca, 0x9d, 0x07, 0x17, 0x3b, 0xcc, 0x71, 0x89, 0xcf, 0x4c, 0xb7,
+	0x17, 0xc3, 0x2b, 0x5b, 0xb0, 0xa9, 0xdd, 0x10, 0x2b, 0x60, 0x0e, 0xed, 0x9e, 0x50, 0xe6, 0x5c,
+	0x38, 0x96, 0x19, 0xae, 0x7d, 0x4c, 0x3e, 0x04, 0xc4, 0x67, 0x95, 0x2f, 0x02, 0xfc, 0x35, 0x0d,
+	0xe1, 0xf7, 0x68, 0xd7, 0x27, 0x68, 0x15, 0x66, 0x99, 0xe9, 0x5f, 0xb7, 0x1c, 0x5b, 0x16, 0xca,
+	0x82, 0x5a, 0xc0, 0xf9, 0x30, 0x6c, 0xda, 0xe8, 0x31, 0xe4, 0x7d, 0x66, 0xb2, 0xc0, 0x97, 0xc5,
+	0xb2, 0xa0, 0x2e, 0xd4, 0x36, 0xab, 0xe3, 0xe4, 0xaa, 0xc3, 0x6b, 0xf5, 0x08, 0x84, 0x39, 0x18,
+	0x29, 0xf0, 0xbb, 0x1d, 0x78, 0x51, 0x11, 0x59, 0x2a, 0x0b, 0xaa, 0x84, 0x87, 0x31, 0x5a, 0x81,
+	0x3c, 0x0d, 0x58, 0x2f, 0x60, 0xf2, 0x4c, 0x59, 0x50, 0xe7, 0x31, 0x8f, 0x90, 0x0c, 0xb3, 0x2e,
+	0xf1, 0x7d, 0xb3, 0x4d, 0xe4, 0x5c, 0xc4, 0x21, 0x09, 0x2b, 0x1f, 0x05, 0x90, 0x75, 0x5e, 0xb6,
+	0x11, 0xb8, 0xee, 0xc0, 0x30, 0xfd, 0x6b, 0xae, 0x0e, 0x2d, 0x80, 0x38, 0x64, 0x2d, 0x3a, 0x76,
+	0x78, 0x8d, 0x47, 0x98, 0xe7, 0x90, 0x98, 0x72, 0x0e, 0x27, 0x21, 0x7a, 0x0e, 0xc5, 0x84, 0x7c,
+	0x2b, 0x34, 0x31, 0x62, 0x36, 0x57, 0x53, 0xaa, 0xb1, 0xc3, 0xd5, 0xc4, 0xe1, 0xaa, 0x91, 0x38,
+	0x8c, 0x87, 0x4f, 0x11, 0x6e, 0x55, 0xd6, 0x61, 0x2d, 0x83, 0x46, 0x6c, 0x61, 0xe5, 0x93, 0x00,
+	0x4a, 0x92, 0xad, 0x53, 0xd7, 0x35, 0xbb, 0xf6, 0x8f, 0x68, 0xa6, 0xc8, 0x88, 0x3f, 0x47, 0x06,
+	0x3d, 0x81, 0xbc, 0x45, 0xbb, 0x17, 0x4e, 0x9b, 0xcb, 0xd8, 0x9a, 0x7c, 0x99, 0x31, 0x0a, 0xf5,
+	0x08, 0x86, 0x39, 0xbc, 0xb2, 0x09, 0xeb, 0x99, 0x3c, 0xb9, 0x8e, 0xaf, 0xc2, 0x48, 0x25, 0x26,
+	0x2e, 0x65, 0xe4, 0xd7, 0xb8, 0x8d, 0x9e, 0x0d, 0x05, 0xce, 0x44, 0x27, 0xff, 0x9e, 0x14, 0x18,
+	0x73, 0x1b, 0x7e, 0x80, 0xb7, 0x44, 0x6e, 0x8c, 0x1e, 0x63, 0x5c, 0x04, 0xd7, 0x48, 0x60, 0x31,
+	0xe5, 0x4f, 0x28, 0xc5, 0x8a, 0x37, 0xb9, 0xbe, 0x24, 0x44, 0x1b, 0x50, 0x30, 0xbd, 0x76, 0xe0,
+	0x92, 0x2e, 0x0b, 0x65, 0x4a, 0x6a, 0x01, 0x8f, 0x36, 0xc2, 0x73, 0xa1, 0x3e, 0x1a, 0xb0, 0x48,
+	0x62, 0x11, 0x27, 0x61, 0xe5, 0xb3, 0x08, 0xcb, 0x99, 0x34, 0xc3, 0xb6, 0x72, 0x09, 0xbb, 0xa4,
+	0x71, 0xa9, 0xe9, 0x6d, 0x75, 0x1c, 0x81, 0x30, 0x07, 0xa3, 0x12, 0x48, 0x81, 0xd7, 0x89, 0x9c,
+	0x2e, 0xe0, 0x70, 0x89, 0x5e, 0xc3, 0xec, 0x25, 0x31, 0x6d, 0xe2, 0xf9, 0xb2, 0x54, 0x96, 0xd4,
+	0xb9, 0xda, 0xee, 0x3d, 0x5c, 0xaa, 0x1e, 0xc6, 0x47, 0xb4, 0x2e, 0xf3, 0x06, 0x38, 0xb9, 0x00,
+	0x21, 0x98, 0x39, 0xa7, 0xf6, 0x80, 0xb7, 0x65, 0xb4, 0x1e, 0x17, 0x97, 0x9b, 0x10, 0x87, 0xfe,
+	0x81, 0x05, 0x72, 0xd3, 0x23, 0x16, 0x23, 0x76, 0xcb, 0xa2, 0x36, 0xf1, 0xe5, 0x7c, 0x59, 0x52,
+	0x8b, 0xb8, 0x98, 0xec, 0xd6, 0xc3, 0x4d, 0x65, 0x1f, 0xe6, 0xc7, 0xab, 0x85, 0x12, 0xae, 0xc9,
+	0x80, 0x3b, 0x1c, 0x2e, 0xd1, 0x12, 0xe4, 0xfa, 0x66, 0x27, 0x20, 0x5c, 0x56, 0x1c, 0xec, 0x8b,
+	0x4f, 0x85, 0x6d, 0x1b, 0xfe, 0xb8, 0xe5, 0x04, 0xda, 0x00, 0x59, 0x7b, 0xa7, 0xd5, 0xcf, 0x8c,
+	0xe6, 0xe9, 0x49, 0xeb, 0x58, 0x33, 0x0e, 0x4f, 0x1b, 0xad, 0xe6, 0xc9, 0xdb, 0x83, 0xa3, 0x66,
+	0xa3, 0xf4, 0x1b, 0x5a, 0x83, 0xe5, 0x54, 0xf6, 0xcd, 0xa9, 0x6e, 0x94, 0x04, 0x24, 0xc3, 0x52,
+	0x2a, 0xf5, 0x4a, 0x33, 0x4a, 0xe2, 0xf6, 0xd5, 0x58, 0x95, 0x78, 0x8c, 0x4d, 0x56, 0xd1, 0x8d,
+	0x03, 0xe3, 0x4c, 0x1f, 0xab, 0x92, 0x95, 0xd5, 0xcf, 0xea, 0x75, 0x4d, 0xd7, 0x4b, 0x02, 0x5a,
+	0x87, 0xd5, 0x54, 0xf6, 0xe5, 0x41, 0xf3, 0x48, 0x6b, 0x94, 0xc4, 0xda, 0x37, 0x09, 0x4a, 0xc9,
+	0x77, 0xe9, 0xe9, 0xc4, 0xeb, 0x3b, 0x16, 0x41, 0x36, 0x2c, 0xa6, 0xc6, 0x0a, 0xfa, 0x77, 0xf2,
+	0x1d, 0xa7, 0x8d, 0x3f, 0xe5, 0xbf, 0x3b, 0x71, 0x7c, 0xc4, 0x5f, 0xc1, 0x9f, 0x19, 0x6d, 0x8f,
+	0xd4, 0xec, 0xf3, 0xe9, 0x09, 0xa6, 0xfc, 0x7f, 0x0f, 0x24, 0xaf, 0xd5, 0x06, 0x94, 0xee, 0x3e,
+	0x34, 0x85, 0x6a, 0x6a, 0xc8, 0x28, 0xea, 0xdd, 0x40, 0x5e, 0x28, 0x80, 0x95, 0xec, 0x3f, 0x1b,
+	0x7a, 0x30, 0xa5, 0xa3, 0xb2, 0xfe, 0x90, 0xca, 0xc3, 0xfb, 0x81, 0xe3, 0xa2, 0xbb, 0xc2, 0x8b,
+	0xb9, 0xf7, 0x85, 0xe1, 0x81, 0xf3, 0x7c, 0x34, 0xc9, 0x1e, 0x7d, 0x0f, 0x00, 0x00, 0xff, 0xff,
+	0xc4, 0xc9, 0x41, 0xdc, 0xcb, 0x07, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -284,7 +667,10 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type SchedulerServiceClient interface {
+	ScheduleDummyTask(ctx context.Context, in *ScheduleDummyTaskRequest, opts ...grpc.CallOption) (*ScheduleDummyTaskResponse, error)
+	ScheduleCommandTask(ctx context.Context, in *ScheduleCommandTaskRequest, opts ...grpc.CallOption) (*ScheduleCommandTaskResponse, error)
 	ScheduleRemoteTask(ctx context.Context, in *ScheduleRemoteTaskRequest, opts ...grpc.CallOption) (*ScheduleRemoteTaskResponse, error)
+	ExecutionNotifications(ctx context.Context, in *ExecutionNotificationsRequest, opts ...grpc.CallOption) (SchedulerService_ExecutionNotificationsClient, error)
 }
 
 type schedulerServiceClient struct {
@@ -293,6 +679,24 @@ type schedulerServiceClient struct {
 
 func NewSchedulerServiceClient(cc grpc.ClientConnInterface) SchedulerServiceClient {
 	return &schedulerServiceClient{cc}
+}
+
+func (c *schedulerServiceClient) ScheduleDummyTask(ctx context.Context, in *ScheduleDummyTaskRequest, opts ...grpc.CallOption) (*ScheduleDummyTaskResponse, error) {
+	out := new(ScheduleDummyTaskResponse)
+	err := c.cc.Invoke(ctx, "/scheduler.v1.SchedulerService/ScheduleDummyTask", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *schedulerServiceClient) ScheduleCommandTask(ctx context.Context, in *ScheduleCommandTaskRequest, opts ...grpc.CallOption) (*ScheduleCommandTaskResponse, error) {
+	out := new(ScheduleCommandTaskResponse)
+	err := c.cc.Invoke(ctx, "/scheduler.v1.SchedulerService/ScheduleCommandTask", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *schedulerServiceClient) ScheduleRemoteTask(ctx context.Context, in *ScheduleRemoteTaskRequest, opts ...grpc.CallOption) (*ScheduleRemoteTaskResponse, error) {
@@ -304,21 +708,101 @@ func (c *schedulerServiceClient) ScheduleRemoteTask(ctx context.Context, in *Sch
 	return out, nil
 }
 
+func (c *schedulerServiceClient) ExecutionNotifications(ctx context.Context, in *ExecutionNotificationsRequest, opts ...grpc.CallOption) (SchedulerService_ExecutionNotificationsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_SchedulerService_serviceDesc.Streams[0], "/scheduler.v1.SchedulerService/ExecutionNotifications", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &schedulerServiceExecutionNotificationsClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type SchedulerService_ExecutionNotificationsClient interface {
+	Recv() (*ExecutionNotificationsResponse, error)
+	grpc.ClientStream
+}
+
+type schedulerServiceExecutionNotificationsClient struct {
+	grpc.ClientStream
+}
+
+func (x *schedulerServiceExecutionNotificationsClient) Recv() (*ExecutionNotificationsResponse, error) {
+	m := new(ExecutionNotificationsResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // SchedulerServiceServer is the server API for SchedulerService service.
 type SchedulerServiceServer interface {
+	ScheduleDummyTask(context.Context, *ScheduleDummyTaskRequest) (*ScheduleDummyTaskResponse, error)
+	ScheduleCommandTask(context.Context, *ScheduleCommandTaskRequest) (*ScheduleCommandTaskResponse, error)
 	ScheduleRemoteTask(context.Context, *ScheduleRemoteTaskRequest) (*ScheduleRemoteTaskResponse, error)
+	ExecutionNotifications(*ExecutionNotificationsRequest, SchedulerService_ExecutionNotificationsServer) error
 }
 
 // UnimplementedSchedulerServiceServer can be embedded to have forward compatible implementations.
 type UnimplementedSchedulerServiceServer struct {
 }
 
+func (*UnimplementedSchedulerServiceServer) ScheduleDummyTask(ctx context.Context, req *ScheduleDummyTaskRequest) (*ScheduleDummyTaskResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ScheduleDummyTask not implemented")
+}
+func (*UnimplementedSchedulerServiceServer) ScheduleCommandTask(ctx context.Context, req *ScheduleCommandTaskRequest) (*ScheduleCommandTaskResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ScheduleCommandTask not implemented")
+}
 func (*UnimplementedSchedulerServiceServer) ScheduleRemoteTask(ctx context.Context, req *ScheduleRemoteTaskRequest) (*ScheduleRemoteTaskResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ScheduleRemoteTask not implemented")
+}
+func (*UnimplementedSchedulerServiceServer) ExecutionNotifications(req *ExecutionNotificationsRequest, srv SchedulerService_ExecutionNotificationsServer) error {
+	return status.Errorf(codes.Unimplemented, "method ExecutionNotifications not implemented")
 }
 
 func RegisterSchedulerServiceServer(s *grpc.Server, srv SchedulerServiceServer) {
 	s.RegisterService(&_SchedulerService_serviceDesc, srv)
+}
+
+func _SchedulerService_ScheduleDummyTask_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ScheduleDummyTaskRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SchedulerServiceServer).ScheduleDummyTask(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/scheduler.v1.SchedulerService/ScheduleDummyTask",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SchedulerServiceServer).ScheduleDummyTask(ctx, req.(*ScheduleDummyTaskRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SchedulerService_ScheduleCommandTask_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ScheduleCommandTaskRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SchedulerServiceServer).ScheduleCommandTask(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/scheduler.v1.SchedulerService/ScheduleCommandTask",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SchedulerServiceServer).ScheduleCommandTask(ctx, req.(*ScheduleCommandTaskRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _SchedulerService_ScheduleRemoteTask_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -339,15 +823,50 @@ func _SchedulerService_ScheduleRemoteTask_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SchedulerService_ExecutionNotifications_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ExecutionNotificationsRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(SchedulerServiceServer).ExecutionNotifications(m, &schedulerServiceExecutionNotificationsServer{stream})
+}
+
+type SchedulerService_ExecutionNotificationsServer interface {
+	Send(*ExecutionNotificationsResponse) error
+	grpc.ServerStream
+}
+
+type schedulerServiceExecutionNotificationsServer struct {
+	grpc.ServerStream
+}
+
+func (x *schedulerServiceExecutionNotificationsServer) Send(m *ExecutionNotificationsResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 var _SchedulerService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "scheduler.v1.SchedulerService",
 	HandlerType: (*SchedulerServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "ScheduleDummyTask",
+			Handler:    _SchedulerService_ScheduleDummyTask_Handler,
+		},
+		{
+			MethodName: "ScheduleCommandTask",
+			Handler:    _SchedulerService_ScheduleCommandTask_Handler,
+		},
+		{
 			MethodName: "ScheduleRemoteTask",
 			Handler:    _SchedulerService_ScheduleRemoteTask_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "ExecutionNotifications",
+			Handler:       _SchedulerService_ExecutionNotifications_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "v1/scheduler.proto",
 }
